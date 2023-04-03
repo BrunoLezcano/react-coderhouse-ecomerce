@@ -1,16 +1,17 @@
-import logo from "./logo.svg";
 import "./App.css";
-import { NavBar } from "./Navbar";
-import { Footer } from "./Footer";
+import { Items } from "./components/Items/ItemListContainer";
+
+import { NavBar } from "./components/Navbar/Navbar";
 
 function App() {
-  return (
-    <div className="App">
-      <h1>como va</h1>
-      <NavBar />
-      <Footer />
-    </div>
-  );
+    return (
+        <div className="App">
+            <NavBar />
+            <div>
+                <Items greeting={"pepito"} />
+            </div>
+        </div>
+    );
 }
 
 export default App;
