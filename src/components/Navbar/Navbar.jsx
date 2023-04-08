@@ -1,36 +1,6 @@
-/*
 import Cartwidget from "../CartWidget/Cartwidget";
-import styles from "./Navbar.module.css";
-import { LogoTitle } from "../LogoTitle/LogoTitle";
-import { Button } from "@mui/material";
-
-export const NavBar = () => {
-    return (
-        <nav className={styles.title}>
-            <LogoTitle />
-            <ul className={styles.ul}>
-                <li>
-                    <Button size="small" variant="text">
-                        Cartucheras
-                    </Button>
-                </li>
-                <li>
-                    <Button size="small" variant="text">
-                        Necessaire
-                    </Button>
-                </li>
-                <li>
-                    <Button size="small" variant="text">
-                        Bolso
-                    </Button>
-                </li>
-            </ul>
-            <Cartwidget />
-        </nav>
-    );
-};
-*/
-import Cartwidget from "../CartWidget/Cartwidget";
+import { TitleDesktop } from "../LogoTitle/TitleDesktop";
+import { TitleCell } from "../LogoTitle/TitleCel";
 
 import * as React from "react";
 import AppBar from "@mui/material/AppBar";
@@ -52,7 +22,7 @@ export function NavBar() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
 
-    const handleOpenNavMenu = (event) => {
+    const aperturaHamburguesa = (event) => {
         setAnchorElNav(event.currentTarget);
     };
     const handleOpenUserMenu = (event) => {
@@ -63,10 +33,6 @@ export function NavBar() {
         setAnchorElNav(null);
     };
 
-    const handleCloseUserMenu = () => {
-        setAnchorElUser(null);
-    };
-
     return (
         <AppBar position="static">
             <Container maxWidth="xl">
@@ -74,23 +40,7 @@ export function NavBar() {
                     <AdbIcon
                         sx={{ display: { xs: "none", md: "flex" }, mr: 3 }}
                     />
-                    <Typography
-                        variant="h1"
-                        noWrap
-                        component="a"
-                        href="/"
-                        sx={{
-                            mr: 2,
-                            display: { xs: "none", md: "flex" },
-                            fontFamily: "monospace",
-                            fontWeight: 700,
-                            fontSize: "2rem",
-                            letterSpacing: ".3rem",
-                            color: "inherit",
-                        }}
-                    >
-                        ISHIO
-                    </Typography>
+                    <TitleDesktop />
 
                     <Box
                         sx={{
@@ -104,8 +54,8 @@ export function NavBar() {
                             aria-label="account of current user"
                             aria-controls="menu-appbar"
                             aria-haspopup="true"
-                            onClick={handleOpenNavMenu}
-                            color="black"
+                            onClick={aperturaHamburguesa}
+                            color="inherit"
                         >
                             <MenuIcon />
                         </IconButton>
@@ -146,24 +96,7 @@ export function NavBar() {
                     <AdbIcon
                         sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
                     />
-                    <Typography
-                        variant="h5"
-                        noWrap
-                        component="a"
-                        href=""
-                        sx={{
-                            mr: 2,
-                            display: { xs: "flex", md: "none" },
-                            flexGrow: 1,
-                            fontFamily: "monospace",
-                            fontWeight: 700,
-                            fontSize: "1rem",
-                            letterSpacing: ".3rem",
-                            color: "inherit",
-                        }}
-                    >
-                        ISHIO
-                    </Typography>
+                    <TitleCell />
                     <Box
                         sx={{
                             flexGrow: 1,
