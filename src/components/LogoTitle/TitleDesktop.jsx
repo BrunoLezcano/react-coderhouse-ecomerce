@@ -15,5 +15,3 @@ export function TitleDesktop() {
         </Typography>
     );
 }
-
-//sx={{ display: { xs: "none", md: "flex" }, mr: 3 }}

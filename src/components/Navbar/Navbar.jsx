@@ -1,8 +1,8 @@
 import Cartwidget from "../CartWidget/Cartwidget";
 import { TitleDesktop } from "../LogoTitle/TitleDesktop";
 import { TitleCell } from "../LogoTitle/TitleCel";
+import { useState, useEffect } from "react";
 
-import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -19,19 +19,24 @@ import AdbIcon from "@mui/icons-material/Adb";
 const pages = ["Bolsos", "Cartucheras", "Necessaire"];
 
 export function NavBar() {
-    const [anchorElNav, setAnchorElNav] = React.useState(null);
-    const [anchorElUser, setAnchorElUser] = React.useState(null);
+    const [anchorElNav, setAnchorElNav] = useState(null);
+    const [anchorElUser, setAnchorElUser] = useState(null);
 
     const aperturaHamburguesa = (event) => {
         setAnchorElNav(event.currentTarget);
     };
-    const handleOpenUserMenu = (event) => {
+    const clickOpcionMenu = () => {
+        setAnchorElNav(null);
+    };
+    const clickCarrito = (event) => {
         setAnchorElUser(event.currentTarget);
     };
 
-    const handleCloseNavMenu = () => {
-        setAnchorElNav(null);
-    };
+    useEffect(() => {
+        console.log("hola como va");
+    }, []);
+
+    const UnidadCarrito = 1;
 
     return (
         <AppBar position="static">
@@ -72,7 +77,7 @@ export function NavBar() {
                                 horizontal: "left",
                             }}
                             open={Boolean(anchorElNav)}
-                            onClose={handleCloseNavMenu}
+                            onClose={clickOpcionMenu}
                             sx={{
                                 display: { xs: "inLine", md: "none" },
                                 textDecoration: "none",
@@ -81,7 +86,7 @@ export function NavBar() {
                             {pages.map((page) => (
                                 <MenuItem
                                     key={page}
-                                    onClick={handleCloseNavMenu}
+                                    onClick={clickOpcionMenu}
                                     sx={{
                                         my: 1,
                                     }}
@@ -106,7 +111,7 @@ export function NavBar() {
                         {pages.map((page) => (
                             <Button
                                 key={page}
-                                onClick={handleCloseNavMenu}
+                                onClick={clickOpcionMenu}
                                 sx={{
                                     my: 1,
                                     color: "white",
@@ -121,11 +126,8 @@ export function NavBar() {
 
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Open settings">
-                            <IconButton
-                                onClick={handleOpenUserMenu}
-                                sx={{ p: 0 }}
-                            >
-                                <Cartwidget />
+                            <IconButton onClick={clickCarrito} sx={{ p: 0 }}>
+                                <Cartwidget unidades={UnidadCarrito} />
                             </IconButton>
                         </Tooltip>
                     </Box>
