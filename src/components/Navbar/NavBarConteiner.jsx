@@ -19,14 +19,7 @@ const NavBarConteiner = () => {
 
     return (
         <div>
-            <NavBar
-                aperturaHamburguesa={aperturaHamburguesa}
-                anchorElNav={anchorElNav}
-                anchorElUser={anchorElUser}
-                clickOpcionMenu={clickOpcionMenu}
-                clickCarrito={clickCarrito}
-                UnidadCarrito={UnidadCarrito}
-            />
+            <NavBar />
         </div>
     );
 };

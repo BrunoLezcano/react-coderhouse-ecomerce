@@ -1,26 +1,18 @@
-import { useEffect, useState } from "react";
 import ItemList from "./ItemList";
-import { productos } from "../../productosMock";
+import useCounter from "../../hooks/useCounter";
+import useFetching from "../../hooks/useGetFetching";
 
 export function Items() {
-    const [items, setItems] = useState([]);
-    useEffect(() => {
-        const saludar = new Promise((resolve, reject) => {
-            resolve(productos);
-        });
+    const { counter, incrementar, decrementar, reiniciar } = useCounter(1);
 
-        saludar
-            .then((resultado) => {
-                setItems(resultado);
-            })
-            .catch((err) => {
-                console.log("a esta parte ya habria un rechazo");
-            });
-    }, []);
-
+    const { data } = useFetching([], "http://localhost:5000/productos");
     return (
         <div>
-            <ItemList listadoDeItems={items} />
+            <ItemList listadoDeItems={data} />
+            <button onClick={incrementar}>incrementar</button>
+            <h2>{counter} </h2>
+            <button onClick={decrementar}>decrementar</button>
+            <button onClick={reiniciar}>reiniciar</button>
         </div>
     );
 }

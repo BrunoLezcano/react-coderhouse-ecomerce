@@ -16,11 +16,16 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 
+import { Outlet } from "react-router-dom";
+
 const pages = ["Bolsos", "Cartucheras", "Necessaire"];
 
 export function NavBar() {
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
+    const [UnidadCarrito, setUnidadCarrito] = useState(1);
+    /*
+    EVENTOS PARA LOS BOTONES DEL NAVBAR, AGUARDANDO RE-DIRECCION
 
     const aperturaHamburguesa = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -28,112 +33,115 @@ export function NavBar() {
     const clickOpcionMenu = () => {
         setAnchorElNav(null);
     };
+
+    */
     const clickCarrito = (event) => {
-        setAnchorElUser(event.currentTarget);
+        setUnidadCarrito(UnidadCarrito + 1);
     };
 
     useEffect(() => {
         console.log("hola como va");
     }, []);
 
-    const UnidadCarrito = 1;
-
     return (
-        <AppBar position="static">
-            <Container maxWidth="xl">
-                <Toolbar disableGutters>
-                    <AdbIcon
-                        sx={{ display: { xs: "none", md: "flex" }, mr: 3 }}
-                    />
-                    <TitleDesktop />
-
-                    <Box
-                        sx={{
-                            flexGrow: 1,
-                            display: { xs: "flex", md: "none" },
-                            style: { textTransform: "none" },
-                        }}
-                    >
-                        <IconButton
-                            size="large"
-                            aria-label="account of current user"
-                            aria-controls="menu-appbar"
-                            aria-haspopup="true"
-                            onClick={aperturaHamburguesa}
-                            color="inherit"
-                        >
-                            <MenuIcon />
-                        </IconButton>
-                        <Menu
-                            id="menu-appbar"
-                            anchorEl={anchorElNav}
-                            anchorOrigin={{
-                                vertical: "bottom",
-                                horizontal: "left",
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: "top",
-                                horizontal: "left",
-                            }}
-                            open={Boolean(anchorElNav)}
-                            onClose={clickOpcionMenu}
+        <Box>
+            <AppBar position="static">
+                <Container maxWidth="xl">
+                    <Toolbar disableGutters>
+                        <AdbIcon
+                            sx={{ display: { xs: "none", md: "flex" }, mr: 3 }}
+                        />
+                        <TitleDesktop />
+                        <Box
                             sx={{
-                                display: { xs: "inLine", md: "none" },
-                                textDecoration: "none",
+                                flexGrow: 1,
+                                display: { xs: "flex", md: "none" },
+                                style: { textTransform: "none" },
+                            }}
+                        >
+                            <IconButton
+                                size="large"
+                                aria-label="account of current user"
+                                aria-controls="menu-appbar"
+                                aria-haspopup="true"
+                                //onClick={aperturaHamburguesa}
+                                color="inherit"
+                            >
+                                <MenuIcon />
+                            </IconButton>
+                            <Menu
+                                id="menu-appbar"
+                                anchorEl={anchorElNav}
+                                anchorOrigin={{
+                                    vertical: "bottom",
+                                    horizontal: "left",
+                                }}
+                                keepMounted
+                                transformOrigin={{
+                                    vertical: "top",
+                                    horizontal: "left",
+                                }}
+                                open={Boolean(anchorElNav)}
+                                //onClose={clickOpcionMenu}
+                                sx={{
+                                    display: { xs: "inLine", md: "none" },
+                                    textDecoration: "none",
+                                }}
+                            >
+                                {pages.map((page) => (
+                                    <MenuItem
+                                        key={page}
+                                        //onClick={clickOpcionMenu}
+                                        sx={{
+                                            my: 1,
+                                        }}
+                                    >
+                                        <Typography textAlign="center">
+                                            {page}
+                                        </Typography>
+                                    </MenuItem>
+                                ))}
+                            </Menu>
+                        </Box>
+                        <AdbIcon
+                            sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
+                        />
+                        <TitleCell />
+                        <Box
+                            sx={{
+                                flexGrow: 1,
+                                display: { xs: "none", md: "flex" },
                             }}
                         >
                             {pages.map((page) => (
-                                <MenuItem
+                                <Button
                                     key={page}
-                                    onClick={clickOpcionMenu}
+                                    //onClick={clickOpcionMenu}
                                     sx={{
                                         my: 1,
+                                        color: "white",
+                                        display: "block",
+                                        textTransform: "none",
                                     }}
                                 >
-                                    <Typography textAlign="center">
-                                        {page}
-                                    </Typography>
-                                </MenuItem>
+                                    {page}
+                                </Button>
                             ))}
-                        </Menu>
-                    </Box>
-                    <AdbIcon
-                        sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
-                    />
-                    <TitleCell />
-                    <Box
-                        sx={{
-                            flexGrow: 1,
-                            display: { xs: "none", md: "flex" },
-                        }}
-                    >
-                        {pages.map((page) => (
-                            <Button
-                                key={page}
-                                onClick={clickOpcionMenu}
-                                sx={{
-                                    my: 1,
-                                    color: "white",
-                                    display: "block",
-                                    textTransform: "none",
-                                }}
-                            >
-                                {page}
-                            </Button>
-                        ))}
-                    </Box>
-
-                    <Box sx={{ flexGrow: 0 }}>
-                        <Tooltip title="Open settings">
-                            <IconButton onClick={clickCarrito} sx={{ p: 0 }}>
-                                <Cartwidget unidades={UnidadCarrito} />
-                            </IconButton>
-                        </Tooltip>
-                    </Box>
-                </Toolbar>
-            </Container>
-        </AppBar>
+                        </Box>
+                        <Box sx={{ flexGrow: 0 }}>
+                            <Tooltip title="Open settings">
+                                <IconButton
+                                    onClick={clickCarrito}
+                                    sx={{ p: 0 }}
+                                >
+                                    <Cartwidget unidades={UnidadCarrito} />
+                                </IconButton>
+                            </Tooltip>
+                        </Box>
+                    </Toolbar>
+                </Container>
+            </AppBar>
+        </Box>
     );
 }
 export default NavBar;
