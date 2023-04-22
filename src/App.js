@@ -1,26 +1,25 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Items } from "./components/Items/ItemListContainer";
-
-import { NavBar } from "./components/Navbar/Navbar";
+import { ItemListContainer } from "./components/Items/ItemListContainer";
+import NavBarConteiner from "./components/Navbar/NavBarConteiner";
+import ItemDetailContainer from "./components/ItemDetail/ItemDetailContainer";
 
 function App() {
     return (
-        /*
         <BrowserRouter>
             <Routes>
-                <Route element={<NavBar />}>
-                    <Route path="/listaProductos" element={<Items />} />
+                <Route element={<NavBarConteiner />}>
+                    <Route
+                        path="/listaProductos"
+                        element={<ItemListContainer />}
+                    />
+                    <Route
+                        path="/detalleProducto"
+                        element={<ItemDetailContainer />}
+                    />
                     <Route path="*" element={<h2>la ruta no existe</h2>} />
                 </Route>
             </Routes>
         </BrowserRouter>
-        */
-        <div className="App">
-            <NavBar />
-            <div>
-                <Items />
-            </div>
-        </div>
     );
 }
 

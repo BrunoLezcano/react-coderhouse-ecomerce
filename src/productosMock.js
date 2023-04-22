@@ -2,7 +2,7 @@ export const productos = [
     {
         id: 1,
         title: "Cartuchera Larga",
-        stock: 20,
+        stock: 8,
         description: "cartuchera mediana con mucho espacio.",
         categoria: "cartuchera",
         price: 2500,
@@ -11,7 +11,7 @@ export const productos = [
     {
         id: 2,
         title: "Porta Cosméticos",
-        stock: 20,
+        stock: 3,
         description: "ideal para organizar tus elementos personales.",
         categoria: "necessaire",
         price: 2500,
@@ -20,7 +20,7 @@ export const productos = [
     {
         id: 3,
         title: "Bolso de mano",
-        stock: 20,
+        stock: 2,
         description: "con gran capacidad de almacenamiento, varios colores.",
         categoria: "bolso",
         price: 2500,
@@ -29,7 +29,7 @@ export const productos = [
     {
         id: 4,
         title: "cartuchera corta",
-        stock: 20,
+        stock: 3,
         description: "cartuchera a medida universitaria.comodidad total",
         categoria: "cartuchera",
         price: 2500,

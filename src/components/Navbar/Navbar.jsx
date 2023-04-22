@@ -24,8 +24,8 @@ export function NavBar() {
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
     const [UnidadCarrito, setUnidadCarrito] = useState(1);
-    /*
-    EVENTOS PARA LOS BOTONES DEL NAVBAR, AGUARDANDO RE-DIRECCION
+
+    //EVENTOS PARA LOS BOTONES DEL NAVBAR, AGUARDANDO RE-DIRECCION
 
     const aperturaHamburguesa = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -34,14 +34,9 @@ export function NavBar() {
         setAnchorElNav(null);
     };
 
-    */
     const clickCarrito = (event) => {
         setUnidadCarrito(UnidadCarrito + 1);
     };
-
-    useEffect(() => {
-        console.log("hola como va");
-    }, []);
 
     return (
         <Box>
@@ -64,7 +59,7 @@ export function NavBar() {
                                 aria-label="account of current user"
                                 aria-controls="menu-appbar"
                                 aria-haspopup="true"
-                                //onClick={aperturaHamburguesa}
+                                onClick={aperturaHamburguesa}
                                 color="inherit"
                             >
                                 <MenuIcon />
@@ -82,7 +77,7 @@ export function NavBar() {
                                     horizontal: "left",
                                 }}
                                 open={Boolean(anchorElNav)}
-                                //onClose={clickOpcionMenu}
+                                onClose={clickOpcionMenu}
                                 sx={{
                                     display: { xs: "inLine", md: "none" },
                                     textDecoration: "none",
@@ -141,6 +136,7 @@ export function NavBar() {
                     </Toolbar>
                 </Container>
             </AppBar>
+            <Outlet />
         </Box>
     );
 }

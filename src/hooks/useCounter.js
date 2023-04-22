@@ -7,9 +7,7 @@ const useCounter = (estadoInicial) => {
         setCounter(counter + 1);
     };
     const decrementar = () => {
-        if (counter > 1) {
-            setCounter(counter - 1);
-        }
+        counter > 1 && setCounter(counter - 1);
     };
     const reiniciar = () => {
         setCounter(estadoInicial);
