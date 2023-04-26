@@ -8,14 +8,16 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route element={<NavBarConteiner />}>
+                    <Route path="/" element={<ItemListContainer />} />
                     <Route
-                        path="/listaProductos"
+                        path="/categoria/:nombre"
                         element={<ItemListContainer />}
                     />
                     <Route
-                        path="/detalleProducto"
+                        path="/detalleProducto/:id"
                         element={<ItemDetailContainer />}
                     />
+
                     <Route path="*" element={<h2>la ruta no existe</h2>} />
                 </Route>
             </Routes>

@@ -14,15 +14,16 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
 
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
 const pages = ["Bolsos", "Cartucheras", "Necessaire"];
 
 export function NavBar() {
+    const navigate = useNavigate();
+
     const [anchorElNav, setAnchorElNav] = useState(null);
-    const [anchorElUser, setAnchorElUser] = useState(null);
+
     const [UnidadCarrito, setUnidadCarrito] = useState(1);
 
     //EVENTOS PARA LOS BOTONES DEL NAVBAR, AGUARDANDO RE-DIRECCION
@@ -34,7 +35,7 @@ export function NavBar() {
         setAnchorElNav(null);
     };
 
-    const clickCarrito = (event) => {
+    const clickCarrito = () => {
         setUnidadCarrito(UnidadCarrito + 1);
     };
 
@@ -43,9 +44,6 @@ export function NavBar() {
             <AppBar position="static">
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>
-                        <AdbIcon
-                            sx={{ display: { xs: "none", md: "flex" }, mr: 3 }}
-                        />
                         <TitleDesktop />
                         <Box
                             sx={{
@@ -86,38 +84,44 @@ export function NavBar() {
                                 {pages.map((page) => (
                                     <MenuItem
                                         key={page}
-                                        //onClick={clickOpcionMenu}
                                         sx={{
                                             my: 1,
                                         }}
                                     >
-                                        <Typography textAlign="center">
+                                        <Typography
+                                            textAlign="center"
+                                            onClick={() =>
+                                                navigate(`/categoria/${page}`)
+                                            }
+                                        >
                                             {page}
                                         </Typography>
                                     </MenuItem>
                                 ))}
                             </Menu>
                         </Box>
-                        <AdbIcon
-                            sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
-                        />
+
                         <TitleCell />
+
                         <Box
                             sx={{
                                 flexGrow: 1,
                                 display: { xs: "none", md: "flex" },
+                                paddingLeft: "2rem",
                             }}
                         >
                             {pages.map((page) => (
                                 <Button
                                     key={page}
-                                    //onClick={clickOpcionMenu}
                                     sx={{
                                         my: 1,
                                         color: "white",
                                         display: "block",
                                         textTransform: "none",
                                     }}
+                                    onClick={() =>
+                                        navigate(`/categoria/${page}`)
+                                    }
                                 >
                                     {page}
                                 </Button>

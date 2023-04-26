@@ -7,6 +7,7 @@ import {
     Typography,
     Grid,
 } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const TheCard = ({ elemento, CardItem }) => {
     return (
@@ -32,9 +33,11 @@ const TheCard = ({ elemento, CardItem }) => {
                             justifyContent: "flex-start",
                         }}
                     >
-                        <Button variant="contained" size="small">
-                            Detalle
-                        </Button>
+                        <Link to={`/detalleProducto/${elemento.id}`}>
+                            <Button variant="contained" size="small">
+                                Detalle
+                            </Button>
+                        </Link>
                     </CardActions>
                 </Card>
             </CardItem>

@@ -1,21 +1,21 @@
 import { useEffect, useState } from "react";
 import { productos } from "../../productosMock";
 import ItemDetail from "./ItemDetail";
+import { useParams } from "react-router-dom";
 
 const ItemDetailContainer = () => {
     const [item, setItem] = useState({});
 
-    const idBuscado = 1;
+    const { id } = useParams();
 
     useEffect(() => {
-        const encontrado = productos.find((prod) => prod.id === idBuscado);
+        const encontrado = productos.find((prod) => prod.id === Number(id));
         setItem(encontrado);
-    }, [idBuscado]);
+    }, [id]);
 
-    console.log(item);
     return (
         <div>
-            <ItemDetail item={item} />
+            <ItemDetail item={item} key={item.id} />
         </div>
     );
 };

@@ -13,7 +13,7 @@ export const stilos = {
         display: { xs: "flex", md: "none" },
         flexGrow: 1,
         fontFamily: "monospace",
-        fontWeight: 700,
+        fontWeight: 600,
         fontSize: "1.5rem",
         letterSpacing: ".3rem",
         color: "inherit",

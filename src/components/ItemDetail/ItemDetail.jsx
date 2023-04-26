@@ -1,8 +1,17 @@
+import CardDetail from "./CardDetail";
+import { Box } from "@mui/material";
+
 const ItemDetail = ({ item }) => {
     return (
-        <div>
-            <h2>{item.title}</h2>
-        </div>
+        <Box
+            sx={{
+                display: "flex",
+                justifyContent: "center",
+                paddingTop: "2rem",
+            }}
+        >
+            <CardDetail element={item} />
+        </Box>
     );
 };
 
