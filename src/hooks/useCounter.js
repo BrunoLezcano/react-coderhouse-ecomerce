@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-const useCounter = (estadoInicial) => {
+const useCounter = (estadoInicial, valorMaximo) => {
     const [counter, setCounter] = useState(estadoInicial);
 
     const incrementar = () => {
-        setCounter(counter + 1);
+        counter < valorMaximo && setCounter(counter + 1);
     };
     const decrementar = () => {
         counter > 1 && setCounter(counter - 1);

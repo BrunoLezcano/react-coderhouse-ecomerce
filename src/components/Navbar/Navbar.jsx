@@ -24,8 +24,6 @@ export function NavBar() {
 
     const [anchorElNav, setAnchorElNav] = useState(null);
 
-    const [UnidadCarrito, setUnidadCarrito] = useState(1);
-
     //EVENTOS PARA LOS BOTONES DEL NAVBAR, AGUARDANDO RE-DIRECCION
 
     const aperturaHamburguesa = (event) => {
@@ -33,10 +31,6 @@ export function NavBar() {
     };
     const clickOpcionMenu = () => {
         setAnchorElNav(null);
-    };
-
-    const clickCarrito = () => {
-        setUnidadCarrito(UnidadCarrito + 1);
     };
 
     return (
@@ -130,10 +124,12 @@ export function NavBar() {
                         <Box sx={{ flexGrow: 0 }}>
                             <Tooltip title="Open settings">
                                 <IconButton
-                                    onClick={clickCarrito}
                                     sx={{ p: 0 }}
+                                    onClick={() => {
+                                        navigate(`/cart`);
+                                    }}
                                 >
-                                    <Cartwidget unidades={UnidadCarrito} />
+                                    <Cartwidget />
                                 </IconButton>
                             </Tooltip>
                         </Box>
