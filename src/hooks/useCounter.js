@@ -1,7 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const useCounter = (estadoInicial, valorMaximo) => {
     const [counter, setCounter] = useState(estadoInicial);
+
+    useEffect(() => {
+        setCounter(estadoInicial);
+    }, [estadoInicial]);
 
     const incrementar = () => {
         counter < valorMaximo && setCounter(counter + 1);

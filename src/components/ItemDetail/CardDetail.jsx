@@ -11,26 +11,22 @@ import { useContext } from "react";
 import { CartContext } from "../../context/cartContext";
 
 export default function CardDetail({ element }) {
-    const { counter, incrementar, decrementar } = useCounter(1, element.stock);
+    const { agregarCarrito, conseguirQuantityById } = useContext(CartContext);
 
+    const totalEnCarrito = conseguirQuantityById(element.id);
+
+    const { counter, incrementar, decrementar } = useCounter(totalEnCarrito, element.stock);
     const navigate = useNavigate();
-
-    const { agregarCarrito } = useContext(CartContext);
 
     const producto = { ...element, Quantity: counter };
 
     return (
         <Card
             sx={{
-                maxWidth: "30rem",
+                maxWidth: "25rem",
             }}
         >
-            <CardMedia
-                component="img"
-                sx={{ height: 140 }}
-                image={element.img}
-                title={element.title}
-            />
+            <CardMedia component="img" sx={{ height: 140 }} image={element.img} title={element.title} />
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
                     {element.title}

@@ -1,7 +1,7 @@
 import Cartwidget from "../CartWidget/Cartwidget";
 import { TitleDesktop } from "../LogoTitle/TitleDesktop";
 import { TitleCell } from "../LogoTitle/TitleCel";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -82,12 +82,7 @@ export function NavBar() {
                                             my: 1,
                                         }}
                                     >
-                                        <Typography
-                                            textAlign="center"
-                                            onClick={() =>
-                                                navigate(`/categoria/${page}`)
-                                            }
-                                        >
+                                        <Typography textAlign="center" onClick={() => navigate(`/categoria/${page}`)}>
                                             {page}
                                         </Typography>
                                     </MenuItem>
@@ -113,9 +108,7 @@ export function NavBar() {
                                         display: "block",
                                         textTransform: "none",
                                     }}
-                                    onClick={() =>
-                                        navigate(`/categoria/${page}`)
-                                    }
+                                    onClick={() => navigate(`/categoria/${page}`)}
                                 >
                                     {page}
                                 </Button>

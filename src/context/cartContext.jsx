@@ -13,7 +13,7 @@ export const CartContextProvider = ({ children }) => {
                 if (element.id === producto.id) {
                     return {
                         ...element,
-                        Quantity: element.Quantity + producto.Quantity,
+                        Quantity: producto.Quantity,
                     };
                 } else {
                     return element;
@@ -38,10 +38,13 @@ export const CartContextProvider = ({ children }) => {
         return miralo;
     };
 
+    const conseguirQuantityById = (id) => {
+        const buscado = cart.find((element) => element.id === id);
+        return buscado ? buscado.Quantity : 1;
+    };
+
     return (
-        <CartContext.Provider
-            value={{ cart, agregarCarrito, vaciarCarrito, quitarDelCarrito }}
-        >
+        <CartContext.Provider value={{ cart, agregarCarrito, vaciarCarrito, quitarDelCarrito, conseguirQuantityById }}>
             {children}
         </CartContext.Provider>
     );
