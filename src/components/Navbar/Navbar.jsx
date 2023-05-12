@@ -1,7 +1,10 @@
 import Cartwidget from "../CartWidget/Cartwidget";
+import { CartContext } from "../../context/cartContext";
+
 import { TitleDesktop } from "../LogoTitle/TitleDesktop";
 import { TitleCell } from "../LogoTitle/TitleCel";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { Outlet, useNavigate } from "react-router-dom";
 
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -15,11 +18,10 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 
-import { Outlet, useNavigate } from "react-router-dom";
-
 const pages = ["Bolsos", "Cartucheras", "Necessaire"];
 
 export function NavBar() {
+    const { cart } = useContext(CartContext);
     const navigate = useNavigate();
 
     const [anchorElNav, setAnchorElNav] = useState(null);
@@ -114,18 +116,20 @@ export function NavBar() {
                                 </Button>
                             ))}
                         </Box>
-                        <Box sx={{ flexGrow: 0 }}>
-                            <Tooltip title="Open settings">
-                                <IconButton
-                                    sx={{ p: 0 }}
-                                    onClick={() => {
-                                        navigate(`/cart`);
-                                    }}
-                                >
-                                    <Cartwidget />
-                                </IconButton>
-                            </Tooltip>
-                        </Box>
+                        {cart.length > 0 && (
+                            <Box sx={{ flexGrow: 0 }}>
+                                <Tooltip title="Tu Carrito">
+                                    <IconButton
+                                        sx={{ p: 0 }}
+                                        onClick={() => {
+                                            navigate(`/cart`);
+                                        }}
+                                    >
+                                        <Cartwidget />
+                                    </IconButton>
+                                </Tooltip>
+                            </Box>
+                        )}
                     </Toolbar>
                 </Container>
             </AppBar>

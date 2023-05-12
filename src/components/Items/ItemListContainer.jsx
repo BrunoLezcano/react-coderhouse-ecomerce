@@ -1,5 +1,5 @@
 import ItemList from "./ItemList";
-//import { productos } from "../../productosMock";
+
 import { useEffect, useState } from "react";
 import Paper from "@mui/material/Paper";
 import { experimentalStyled as styled } from "@mui/material/styles";
