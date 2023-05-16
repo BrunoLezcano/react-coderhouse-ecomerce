@@ -4,11 +4,12 @@ import { useContext } from "react";
 import { CartContext } from "../../context/cartContext";
 
 const Cartwidget = () => {
-    const { cart } = useContext(CartContext);
+    const { contarTotalUnidades } = useContext(CartContext);
+    const totales = contarTotalUnidades();
 
     return (
         <>
-            <Badge badgeContent={cart.length} color="primary">
+            <Badge badgeContent={totales} color="primary">
                 <ShoppingCartOutlinedIcon color="action" />
             </Badge>
         </>

@@ -117,7 +117,7 @@ export function NavBar() {
                             ))}
                         </Box>
                         {cart.length > 0 && (
-                            <Box sx={{ flexGrow: 0 }}>
+                            <Box sx={{ flexGrow: 0, marginRight: "1rem" }}>
                                 <Tooltip title="Tu Carrito">
                                     <IconButton
                                         sx={{ p: 0 }}

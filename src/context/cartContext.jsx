@@ -50,10 +50,24 @@ export const CartContextProvider = ({ children }) => {
 
         return total;
     };
+    const contarTotalUnidades = () => {
+        let total = cart.reduce((acc, ele) => {
+            return acc + ele.Quantity;
+        }, 0);
+        return total;
+    };
 
     return (
         <CartContext.Provider
-            value={{ cart, agregarCarrito, vaciarCarrito, quitarDelCarrito, conseguirQuantityById, contarTotalCarrito }}
+            value={{
+                cart,
+                agregarCarrito,
+                vaciarCarrito,
+                quitarDelCarrito,
+                conseguirQuantityById,
+                contarTotalCarrito,
+                contarTotalUnidades,
+            }}
         >
             {children}
         </CartContext.Provider>
