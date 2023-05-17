@@ -36,20 +36,6 @@ export function ItemListContainer() {
                 setItems(productoObtenido);
             })
             .catch();
-
-        /*
-        const productosFiltradosCategoria = productos.filter((prod) => prod.categoria === nombre);
-
-        const tarea = new Promise((resolve, reject) => {
-            resolve(nombre ? productosFiltradosCategoria : productos);
-        });
-        tarea
-            .then((res) => {
-                setItems(res);
-            })
-            .catch((error) => console.log(error));
-
-        */
     }, [nombre]);
 
     const CardItem = styled(Paper)(({ theme }) => ({

@@ -37,7 +37,7 @@ export function NavBar() {
 
     return (
         <Box>
-            <AppBar position="static">
+            <AppBar position="static" sx={{ backgroundColor: "lightblue" }}>
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>
                         <TitleDesktop />
@@ -133,6 +133,7 @@ export function NavBar() {
                     </Toolbar>
                 </Container>
             </AppBar>
+
             <Outlet />
         </Box>
     );

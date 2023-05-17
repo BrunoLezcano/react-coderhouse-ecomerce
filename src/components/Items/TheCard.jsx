@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 const TheCard = ({ elemento, CardItem }) => {
     return (
         <Grid item xs={4} sm={4} md={3}>
-            <CardItem sx={{ boxShadow: "none " }}>
-                <Card sx={{ minWidth: "5rem" }}>
+            <CardItem sx={{ boxShadow: "none" }}>
+                <Card sx={{ minWidth: "4rem" }}>
                     <CardMedia sx={{ height: 120 }} image={elemento.img} title={elemento.title} />
                     <CardContent>
                         <Typography gutterBottom variant="h6" component="div">

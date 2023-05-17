@@ -27,11 +27,12 @@ const FormConteiner = () => {
         const colecionOrdenes = collection(db, "ordenes");
         addDoc(colecionOrdenes, nuevaCompra).then((res) => setEstadoFormulario(res.id));
 
-        cart.map((producto) => {
+        cart.map((producto) =>
             updateDoc(doc(db, "productos", producto.id), {
                 stock: producto.stock - producto.Quantity,
-            });
-        });
+            })
+        );
+
         vaciarCarrito();
     };
 
