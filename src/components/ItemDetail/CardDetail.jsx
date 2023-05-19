@@ -10,6 +10,11 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { CartContext } from "../../context/cartContext";
 
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
+
 export default function CardDetail({ element }) {
     const { agregarCarrito, conseguirQuantityById } = useContext(CartContext);
 
@@ -23,7 +28,7 @@ export default function CardDetail({ element }) {
     return (
         <Card
             sx={{
-                maxWidth: "25rem",
+                maxWidth: "20rem",
             }}
         >
             <CardMedia component="img" sx={{ height: 140 }} image={element.img} title={element.title} />
@@ -46,14 +51,14 @@ export default function CardDetail({ element }) {
                         navigate("/");
                     }}
                 >
-                    volver
+                    <ArrowBackIcon />
                 </Button>
                 <Button size="small" onClick={decrementar}>
-                    -
+                    <RemoveIcon />
                 </Button>
                 <Typography variant="p">{counter}</Typography>
                 <Button size="small" onClick={incrementar}>
-                    +
+                    <AddIcon />
                 </Button>
                 <Button
                     size="small"
@@ -61,7 +66,7 @@ export default function CardDetail({ element }) {
                         agregarCarrito(producto);
                     }}
                 >
-                    agregar
+                    <AddShoppingCartIcon />
                 </Button>
             </CardActions>
         </Card>

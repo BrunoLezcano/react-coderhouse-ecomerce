@@ -9,7 +9,7 @@ import { useContext, useState } from "react";
 import { CartContext } from "../../context/cartContext";
 
 const FormConteiner = () => {
-    const { cart, contarTotalCarrito, vaciarCarrito } = useContext(CartContext);
+    const { cart, contarTotalCarrito, vaciarPostForm } = useContext(CartContext);
 
     const [estadoFormulario, setEstadoFormulario] = useState(null);
 
@@ -33,7 +33,7 @@ const FormConteiner = () => {
             })
         );
 
-        vaciarCarrito();
+        vaciarPostForm();
     };
 
     const { handleSubmit, handleChange, errors } = useFormik({

@@ -1,8 +1,12 @@
 import { createContext, useState } from "react";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 export const CartContext = createContext();
 
 export const CartContextProvider = ({ children }) => {
+    const navigate = useNavigate();
+
     const [cart, setCart] = useState([]);
 
     const agregarCarrito = (producto) => {
@@ -24,14 +28,38 @@ export const CartContextProvider = ({ children }) => {
         } else {
             setCart([...cart, producto]);
         }
+        Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Añadido al carrito",
+            showConfirmButton: false,
+            timer: 800,
+        });
     };
 
     const quitarDelCarrito = (id) => {
         const arrayFiltrado = cart.filter((element) => element.id !== id);
         setCart(arrayFiltrado);
+        arrayFiltrado.length == 0 && navigate("/");
     };
 
-    const vaciarCarrito = () => setCart([]);
+    const vaciarCarrito = () => {
+        Swal.fire({
+            title: "Quieres anular Carrito?",
+            showDenyButton: true,
+            confirmButtonText: "Si, vaciar",
+            denyButtonText: `No`,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                setCart([]);
+                navigate("/");
+            }
+        });
+    };
+
+    const vaciarPostForm = () => {
+        setCart([]);
+    };
 
     const existe = (objeto) => {
         const miralo = cart.some((el) => el.id === objeto);
@@ -67,6 +95,7 @@ export const CartContextProvider = ({ children }) => {
                 conseguirQuantityById,
                 contarTotalCarrito,
                 contarTotalUnidades,
+                vaciarPostForm,
             }}
         >
             {children}

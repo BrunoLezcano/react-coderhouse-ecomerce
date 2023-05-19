@@ -5,6 +5,8 @@ import Divider from "@mui/material/Divider";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 
+import DeleteIcon from "@mui/icons-material/Delete";
+
 const Cart = ({ cart, vaciarCarrito, quitarDelCarrito, total, navigate }) => {
     return (
         <>
@@ -90,14 +92,30 @@ const Cart = ({ cart, vaciarCarrito, quitarDelCarrito, total, navigate }) => {
                                         quitarDelCarrito(e.id);
                                     }}
                                 >
-                                    quitar
+                                    <DeleteIcon />
                                 </Button>
                             </Grid>
                         </Grid>
                     ))}
                 </Grid>
-                <Divider variant="middle" orientation="vertical" flexItem sm={0.5} sx={{ display: { xs: "none" } }} />
-                <Grid container item xs={12} sm={3.5} md={3.5} alignItems={"center"} paddingLeft={"2rem"}>
+                <Divider
+                    variant="middle"
+                    orientation="vertical"
+                    flexItem
+                    xs={0}
+                    sm={0.5}
+                    sx={{ display: { xs: "none" } }}
+                />
+                <Grid
+                    container
+                    item
+                    xs={12}
+                    sm={3.5}
+                    md={3.5}
+                    alignItems={"center"}
+                    justifyContent={"center"}
+                    paddingLeft={"2rem"}
+                >
                     <Typography> El total de tu compra es de ${total}. </Typography>
                     <Grid container>
                         <Button
