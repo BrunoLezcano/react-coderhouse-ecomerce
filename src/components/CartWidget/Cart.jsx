@@ -10,7 +10,10 @@ import DeleteIcon from "@mui/icons-material/Delete";
 const Cart = ({ cart, vaciarCarrito, quitarDelCarrito, total, navigate }) => {
     return (
         <>
-            <Typography> Bienvenido a tu carrito</Typography>
+            <Grid item xs={12} sx={{ display: "flex", justifyContent: "center", padding: "1rem .5rem" }}>
+                <Typography variant="h5"> Bienvenido a tu carrito</Typography>
+            </Grid>
+
             <Grid container width={"95%"}>
                 <Grid item xs={12} sm={8} md={8}>
                     {cart?.map((e) => (
@@ -98,14 +101,7 @@ const Cart = ({ cart, vaciarCarrito, quitarDelCarrito, total, navigate }) => {
                         </Grid>
                     ))}
                 </Grid>
-                <Divider
-                    variant="middle"
-                    orientation="vertical"
-                    flexItem
-                    xs={0}
-                    sm={0.5}
-                    sx={{ display: { xs: "none" } }}
-                />
+
                 <Grid
                     container
                     item

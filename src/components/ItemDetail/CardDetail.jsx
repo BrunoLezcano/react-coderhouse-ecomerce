@@ -29,6 +29,7 @@ export default function CardDetail({ element }) {
         <Card
             sx={{
                 maxWidth: "20rem",
+                background: "#bcddb3",
             }}
         >
             <CardMedia component="img" sx={{ height: 140 }} image={element.img} title={element.title} />
@@ -44,7 +45,7 @@ export default function CardDetail({ element }) {
                 </Typography>
             </CardContent>
 
-            <CardActions>
+            <CardActions sx={{ display: "flex", justifyContent: "space-between" }}>
                 <Button
                     size="small"
                     onClick={() => {
@@ -53,21 +54,35 @@ export default function CardDetail({ element }) {
                 >
                     <ArrowBackIcon />
                 </Button>
-                <Button size="small" onClick={decrementar}>
-                    <RemoveIcon />
-                </Button>
-                <Typography variant="p">{counter}</Typography>
-                <Button size="small" onClick={incrementar}>
-                    <AddIcon />
-                </Button>
-                <Button
-                    size="small"
-                    onClick={() => {
-                        agregarCarrito(producto);
-                    }}
-                >
-                    <AddShoppingCartIcon />
-                </Button>
+
+                {element.stock == 0 ? (
+                    <Typography
+                        variant="h6"
+                        sx={{ display: "flex", justifyContent: "space-between", textAlign: "center", color: "red" }}
+                    >
+                        Sin stock
+                    </Typography>
+                ) : (
+                    <>
+                        <Button size="small" onClick={decrementar}>
+                            <RemoveIcon />
+                        </Button>
+                        <Typography variant="p" color="text.secondary">
+                            {counter}
+                        </Typography>
+                        <Button size="small" onClick={incrementar}>
+                            <AddIcon />
+                        </Button>
+                        <Button
+                            size="small"
+                            onClick={() => {
+                                agregarCarrito(producto);
+                            }}
+                        >
+                            <AddShoppingCartIcon />
+                        </Button>
+                    </>
+                )}
             </CardActions>
         </Card>
     );
